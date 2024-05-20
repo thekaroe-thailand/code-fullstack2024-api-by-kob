@@ -22,9 +22,10 @@ model User {
 }
 
 model Product {
-  id    Int    @id() @default(autoincrement())
-  name  String
-  cost  Int
-  price Int
-  img   String
+  id     Int    @id() @default(autoincrement())
+  name   String
+  cost   Int
+  price  Int
+  img    String
+  status String @default("use")
 }
