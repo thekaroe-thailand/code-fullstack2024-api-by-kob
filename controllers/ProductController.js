@@ -65,8 +65,10 @@ app.put('/update', async (req, res) => {
         // remove old image
         const imagePath = './uploads/' + oldData.img;
 
-        if (fs.existsSync(imagePath)) {
-            await fs.unlinkSync(imagePath);
+        if (oldData.img != "") {
+            if (fs.existsSync(imagePath)) {
+                await fs.unlinkSync(imagePath);
+            }
         }
 
         await prisma.product.update({
