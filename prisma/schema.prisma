@@ -16,7 +16,7 @@ datasource db {
 model User {
   id     Int    @id() @default(autoincrement())
   name   String
-  user   String
+  user   String @unique()
   pass   String
   status String @default("use")
 }
