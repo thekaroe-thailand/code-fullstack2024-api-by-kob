@@ -52,4 +52,24 @@ app.get('/list', async (req, res) => {
     }
 })
 
+app.get('/billInfo/:billSaleId', async (req, res) => {
+    try {
+        const results = await prisma.billSaleDetail.findMany({
+            include: {
+                Product: true
+            },
+            where: {
+                billSaleId: parseInt(req.params.billSaleId)
+            },
+            orderBy: {
+                id: 'desc'
+            }
+        });
+
+        res.send({ results: results })
+    } catch (e) {
+        res.status(500).send({ error: e.message })
+    }
+})
+
 module.exports = app;
