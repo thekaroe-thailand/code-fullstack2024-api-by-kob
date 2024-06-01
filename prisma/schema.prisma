@@ -38,7 +38,7 @@ model BillSale {
   customerAddress String
   payDate         DateTime
   payTime         String
-  status          String           @default("wait") // wait, pay, send
+  status          String           @default("wait") // wait, pay, send, cancel
   BillSaleDetail  BillSaleDetail[]
 }
 

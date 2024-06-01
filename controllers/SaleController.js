@@ -72,4 +72,55 @@ app.get('/billInfo/:billSaleId', async (req, res) => {
     }
 })
 
+app.get('/updateStatusToPay/:billSaleId', async (req, res) => {
+    try {
+        await prisma.billSale.update({
+            data: {
+                status: 'pay'
+            },
+            where: {
+                id: parseInt(req.params.billSaleId)
+            }
+        })
+
+        res.send({ message: 'success' })
+    } catch (e) {
+        res.status(500).send({ error: e.message });
+    }
+})
+
+app.get('/updateStatusToSend/:billSaleId', async (req, res) => {
+    try {
+        await prisma.billSale.update({
+            data: {
+                status: 'send'
+            },
+            where: {
+                id: parseInt(req.params.billSaleId)
+            }
+        })
+
+        res.send({ message: 'success' })
+    } catch (e) {
+        res.status(500).send({ error: e.message });
+    }
+})
+
+app.get('/updateStatusToCancel/:billSaleId', async (req, res) => {
+    try {
+        await prisma.billSale.update({
+            data: {
+                status: 'cancel'
+            },
+            where: {
+                id: parseInt(req.params.billSaleId)
+            }
+        })
+
+        res.send({ message: 'success' })
+    } catch (e) {
+        res.status(500).send({ error: e.message });
+    }
+})
+
 module.exports = app;
